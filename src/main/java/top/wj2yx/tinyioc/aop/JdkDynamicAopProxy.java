@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
+ * 既是AopProxy，可以getProxy，也是InvocationHandler，可以作为参数传入newProxyInstance方法
  * author: wang
  * date: 2018/5/6
  * time: 16:48
