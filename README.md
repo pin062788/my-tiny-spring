@@ -1,3 +1,5 @@
+本项目是参照tiny-spring的[tiny-spring](https://github.com/code4craft/tiny-spring)，在看懂代码的基础上，自己试着实现了一遍。了解更多信息，参考[tiny-spring](https://github.com/code4craft/tiny-spring)
+
 my-tiny-spring
 =======
 
