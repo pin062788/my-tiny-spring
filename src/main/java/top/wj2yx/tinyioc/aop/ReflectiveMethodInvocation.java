@@ -6,6 +6,8 @@ import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Method;
 
 /**
+ * (http://aopalliance.sourceforge.net/doc/org/aopalliance/intercept/MethodInvocation.html)
+ * MethodInvocation: Description of an invocation to a method, given to an interceptor upon method-call.
  * author: wang
  * date: 2018/5/6
  * time: 12:53

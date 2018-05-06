@@ -9,7 +9,7 @@ package top.wj2yx.tinyioc.aop;
 public abstract class AbstractAopProxy implements AopProxy {
 
     /**
-     * 需要传入一个advisedSupport对象
+     * 需要传入一个advisedSupport对象，部分功能依赖于该对象
      */
     protected AdvisedSupport advisedSupport;
 
