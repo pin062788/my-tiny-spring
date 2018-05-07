@@ -9,5 +9,12 @@ import org.aopalliance.aop.Advice;
  * time: 21:18
  */
 public interface Advisor {
+    /**
+     * Advice:
+     * (http://aopalliance.sourceforge.net/doc/org/aopalliance/aop/Advice.html)
+     * Tag interface for Advice. Implementations can be any type of advice, such as Interceptors.
+     * 一个标记类，它的实现者可以是任意类型的advice，比如Interceptor拦截器
+     * @return
+     */
     Advice getAdvice(); //得到增强
 }

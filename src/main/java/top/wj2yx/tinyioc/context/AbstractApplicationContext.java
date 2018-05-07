@@ -33,7 +33,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext{
      * 实例化单例的bean
      * @throws Exception
      */
-    private void onRefresh() throws Exception{
+    protected void onRefresh() throws Exception{
         beanFactory.preInstantiateSingletons();
     }
 
@@ -42,7 +42,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext{
      * @param beanFactory
      * @throws Exception
      */
-    private void registerBeanPostProcessors(AbstractBeanFactory beanFactory) throws Exception{
+    protected void registerBeanPostProcessors(AbstractBeanFactory beanFactory) throws Exception{
         List beanPostProcessors = beanFactory.getBeansForType(BeanPostProcessor.class);
         for(Object beanPostProcessor : beanPostProcessors){
             beanFactory.addBeanPostProcessor((BeanPostProcessor)beanPostProcessor);
