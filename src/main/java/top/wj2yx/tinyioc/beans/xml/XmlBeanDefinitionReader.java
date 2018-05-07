@@ -31,7 +31,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         doLoadBeanDefinitions(inputStream);
     }
 
-    private void doLoadBeanDefinitions(InputStream inputStream) throws Exception{
+    protected void doLoadBeanDefinitions(InputStream inputStream) throws Exception{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = factory.newDocumentBuilder();
         Document document = documentBuilder.parse(inputStream);
@@ -41,12 +41,12 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         inputStream.close();
     }
 
-    private void registerBeanDefinitions(Document document) {
+    public void registerBeanDefinitions(Document document) {
         Element root = document.getDocumentElement();
         parseBeanDefinitions(root);
     }
 
-    private void parseBeanDefinitions(Element root) {
+    protected void parseBeanDefinitions(Element root) {
         NodeList nl = root.getChildNodes();
         for(int i = 0; i < nl.getLength(); i++){
             Node node = nl.item(i);
@@ -57,7 +57,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         }
     }
 
-    private void processBeanDefinition(Element ele) {
+    protected void processBeanDefinition(Element ele) {
         String name = ele.getAttribute("id");
         String className = ele.getAttribute("class");
         BeanDefinition beanDefinition = new BeanDefinition();

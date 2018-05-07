@@ -17,7 +17,7 @@ public class JdkDynamicAopProxy extends AbstractAopProxy implements InvocationHa
         super(advisedSupport);
     }
 
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
         MethodInterceptor methodInterceptor = advisedSupport.getMethodInterceptor();
         if(advisedSupport.getMethodMatcher() != null && advisedSupport.getMethodMatcher().matches(method, advisedSupport.getTargetSource().getTarget().getClass())){
             return methodInterceptor.invoke(new ReflectiveMethodInvocation(advisedSupport.getTargetSource().getTarget(),

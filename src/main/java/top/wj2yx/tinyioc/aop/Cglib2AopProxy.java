@@ -44,6 +44,7 @@ public class Cglib2AopProxy extends AbstractAopProxy {
 
         private DynamicAdvisedInterceptor(AdvisedSupport advisedSupport){
             this.advisedSupport = advisedSupport;
+            this.delegateMethodInterceptor = advisedSupport.getMethodInterceptor();
         }
 
         /**

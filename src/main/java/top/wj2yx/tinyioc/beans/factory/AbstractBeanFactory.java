@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * date: 2018/5/5
  * time: 17:03
  */
-public class AbstractBeanFactory implements BeanFactory{
+public abstract class AbstractBeanFactory implements BeanFactory{
     private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>();//String对应于xml文件中的id
 
     private final List<String> beanDefinitionNames = new ArrayList<String>();
@@ -35,7 +35,7 @@ public class AbstractBeanFactory implements BeanFactory{
         return bean;
     }
 
-    private Object initializeBean(Object bean, String name) throws Exception{
+    protected Object initializeBean(Object bean, String name) throws Exception{
         for(BeanPostProcessor beanPostProcessor : beanPostProcessors){
             bean = beanPostProcessor.postProcessBeforeInitialization(bean, name);//这一步很关键，传进去的是普通bean，传出来的很可能就是代理bean了。
         }
@@ -47,17 +47,7 @@ public class AbstractBeanFactory implements BeanFactory{
         return bean;
     }
 
-    private Object doCreateBean(BeanDefinition beanDefinition) throws Exception{
-        Object bean = createBeanInstance(beanDefinition);
-        beanDefinition.setBean(bean);
-        applyPropertyValues(bean, beanDefinition);
-        return bean;
-    }
-
-    protected void applyPropertyValues(Object bean, BeanDefinition beanDefinition) throws Exception{
-    }
-
-    private Object createBeanInstance(BeanDefinition beanDefinition) throws Exception{
+    protected Object createBeanInstance(BeanDefinition beanDefinition) throws Exception{
         return beanDefinition.getBeanClass().newInstance();
     }
 
@@ -71,6 +61,16 @@ public class AbstractBeanFactory implements BeanFactory{
             String beanName = (String)it.next();
             getBean(beanName);
         }
+    }
+
+    protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception{
+        Object bean = createBeanInstance(beanDefinition);
+        beanDefinition.setBean(bean);
+        applyPropertyValues(bean, beanDefinition);
+        return bean;
+    }
+
+    protected void applyPropertyValues(Object bean, BeanDefinition beanDefinition) throws Exception{
     }
 
     public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) throws Exception{
