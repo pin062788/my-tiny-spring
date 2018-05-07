@@ -16,13 +16,7 @@
         <property name="outputService" ref="outputService"></property>
     </bean>
 
-    <bean id="autoProxyCreator" class="top.wj2yx.tinyioc.aop.AspectJAwareAdvisorAutoProxyCreator"></bean>
-
-    <bean id="timeInterceptor" class="top.wj2yx.tinyioc.aop.TimerInterceptor"></bean>
-
-    <bean id="aspectjAspect" class="top.wj2yx.tinyioc.aop.AspectJExpressionPointcutAdvisor">
-        <property name="advice" ref="timeInterceptor"></property>
-        <property name="expression" value="execution(* us.codecraft.tinyioc.*.*(..))"></property>
+    <bean id="beanInitializeLogger" class="top.wj2yx.tinyioc.BeanInitializeLogger">
     </bean>
 
 </beans>
