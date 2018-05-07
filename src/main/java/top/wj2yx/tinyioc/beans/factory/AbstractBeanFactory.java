@@ -37,11 +37,11 @@ public class AbstractBeanFactory implements BeanFactory{
 
     private Object initializeBean(Object bean, String name) throws Exception{
         for(BeanPostProcessor beanPostProcessor : beanPostProcessors){
-            bean = beanPostProcessor.postProcessBeforeInitialization(bean, name);
+            bean = beanPostProcessor.postProcessBeforeInitialization(bean, name);//这一步很关键，传进去的是普通bean，传出来的很可能就是代理bean了。
         }
 
         for(BeanPostProcessor beanPostProcessor : beanPostProcessors){
-            bean = beanPostProcessor.postProcessAfterInitialization(bean, name);
+            bean = beanPostProcessor.postProcessAfterInitialization(bean, name);//这一步也很关键，传进去的是原先的bean，传出来的很可能就是代理bean了。
         }
 
         return bean;
