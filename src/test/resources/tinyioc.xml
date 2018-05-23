@@ -22,7 +22,7 @@
 
     <bean id="aspectjAspect" class="top.wj2yx.tinyioc.aop.AspectJExpressionPointcutAdvisor">
         <property name="advice" ref="timeInterceptor"></property>
-        <property name="expression" value="execution(* us.codecraft.tinyioc.*.*(..))"></property>
+        <property name="expression" value="execution(* top.wj2yx.tinyioc.*.*(..))"></property>
     </bean>
 
 </beans>
